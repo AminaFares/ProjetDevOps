@@ -35,11 +35,7 @@ public class StockServiceImplTest {
 	void contextLoads() {
 	}
 	
-	@Test
-	public List<Stock> retrieveAllStocks() {
-		return (List<Stock>) stockrepository.findAll();
-	}
-	
+	@Order(0)
 	@Test
 	public void addStock() {
 		s.setLibelleStock("Ajout de stock");
@@ -47,11 +43,20 @@ public class StockServiceImplTest {
 		assertNotNull(s.getLibelleStock());
 	}
 	
+	@Order(1)
+	@Test
+	public List<Stock> retrieveAllStocks() {
+		return (List<Stock>) stockrepository.findAll();
+	}
+	
+	
+	
 	/*@Test
 	public Stock addStock(Stock s) {
 		return stockrepository.save(s);
 	}*/
 	
+	@Order(2)
     @Test
 	public String retrieveStatusStock() {
 		System.out.println("Got into Method!");
@@ -65,11 +70,13 @@ public class StockServiceImplTest {
 		return incrementedOutput;
 	}
 	
+	@Order(3)
 	@Test
 	public Stock retrieveStock(Long id) {
 		return stockrepository.findById(id).get();
 	}
-	
+    
+	@Order(4)
 	@Test 
 	public Stock updateStock(Stock u) {
 		Stock s = stockrepository.findById(u.getIdStock()).get();
@@ -79,6 +86,7 @@ public class StockServiceImplTest {
 		return stockrepository.save(s);
 	}
 	
+	@Order(5)
 	@Test
 	void deleteStock(Long id)
 	{
