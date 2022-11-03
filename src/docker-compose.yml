@@ -12,7 +12,7 @@ services:
  spring_app:
    depends_on:
    - mysqldb
-   image: achat
+   image: aminafares/achat
    container_name: achat
    restart: on-failure
    ports:

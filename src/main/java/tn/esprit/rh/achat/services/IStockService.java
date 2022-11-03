@@ -17,7 +17,5 @@ public interface IStockService {
 	Stock retrieveStock(Long id);
 
 	String retrieveStatusStock();
-	void testAddStock();
-	void MockAddStock();
-	void TestRetriveAllStocks();
+	
 }
