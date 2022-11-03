@@ -84,4 +84,22 @@ public class StockServiceImpl implements IStockService {
 		return finalMessage;
 	}
 
+	@Override
+	public void testAddStock() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void MockAddStock() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void TestRetriveAllStocks() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
