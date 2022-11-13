@@ -46,7 +46,7 @@ pipeline {
          stage("publish to nexus") {
             steps {
                 script {
-                configFileProvider([configFile(fileId: 'Yassine', variable: 'settings')]) {
+                configFileProvider([configFile(fileId: 'yassine', variable: 'settings')]) {
                     sh 'mvn  -B -DskipTests deploy -s $settings'
 
 }                }
