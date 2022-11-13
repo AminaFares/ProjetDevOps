@@ -36,7 +36,7 @@ pipeline {
         stage("code QualityCheck Sonar") {
             steps {
                 script {
-             sh " mvn sonar:sonar -Dsonar.projectKey=yassine -Dsonar.host.url=http://http://192.168.1.200:9000   -Dsonar.login=f02dc50ee19c3a56d28b6f1ecdff128cd891ab1a"
+             	   sh " mvn sonar:sonar -Dsonar.projectKey=yassine -Dsonar.host.url=http://http://192.168.1.200:9000   -Dsonar.login=f02dc50ee19c3a56d28b6f1ecdff128cd891ab1a"
 
                 }
             }
@@ -46,7 +46,7 @@ pipeline {
          stage("publish to nexus") {
             steps {
                 script {
-                configFileProvider([configFile(fileId: 'yassine', variable: 'settings')]) {
+                configFileProvider([configFile(fileId: 'Yassine', variable: 'settings')]) {
                     sh 'mvn  -B -DskipTests deploy -s $settings'
 
 }                }
