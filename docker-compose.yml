@@ -6,7 +6,9 @@ services:
    image: mysql:latest
    restart: unless-stopped
    environment:
-   - MYSQL_ROOT_PASSWORD=root
+   - MYSQL_DATABASE=achatdb
+   - MYSQL_USER=root
+   - MYSQL_PASSWORD=root
    volumes:
    - /home/mysql/data:/var/lib/mysql
  spring_app:
@@ -17,3 +19,6 @@ services:
    restart: on-failure
    ports:
    - "8089:8089"
+volumes:
+    data: 
+   
