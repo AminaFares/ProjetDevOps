@@ -41,14 +41,16 @@ stages {
                    }   
                    
          }
+         */
          stage('nexus') {
             steps {
                
               script {
 
-sh 'mvn -f backend-spring/pom.xml deploy -e'                      }
+sh 'mvn  deploy -e'                      }
                    }         
          }
+    /*
           stage('Build Docker Image'){
                       steps {
                           script{
