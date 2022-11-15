@@ -65,6 +65,7 @@ sh 'mvn  deploy -e'                      }
                                         sh 'docker login -u raealr -p 841997DOCKER'}
                                 }
                                 }
+    /*
                           stage('Pushing Docker Image') {
                                 steps {
                                     script {
@@ -72,7 +73,7 @@ sh 'mvn  deploy -e'                      }
                                      sh 'docker push raealr/backcicd'
                                     }
                                 }
-                          }
+                          } */
                           stage('Run Spring && MySQL Containers') {
                                 steps {
                                     script {
