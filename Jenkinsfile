@@ -29,19 +29,19 @@ stages {
          }*/
 
           
-        /*  stage('SONAR') {
+          stage('SONAR') {
             steps {
                
               script {
 
-                  sh 'mvn -f backend-spring/pom.xml sonar:sonar  -Dsonar.sources=src/main/java -Dsonar.css.node=. -Dsonar.java.binaries=. -Dsonar.host.url=http://172.10.0.140:9000/ -Dsonar.login=admin   -Dsonar.password=sonar'
+                  sh 'mvn  sonar:sonar  -Dsonar.sources=src/main/java -Dsonar.css.node=. -Dsonar.java.binaries=. -Dsonar.host.url=http://172.16.1.132:9000/ -Dsonar.login=admin   -Dsonar.password=sonar'
 
  
                       }
                    }   
                    
          }
-         */
+         
          stage('nexus') {
             steps {
                
