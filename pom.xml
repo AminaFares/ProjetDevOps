@@ -53,7 +53,19 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>3.0.0</version>
 		</dependency>
-
+		<dependency>
+             <groupId>junit</groupId>
+             <artifactId>junit</artifactId>
+             <version>4.12</version>
+             <scope>test</scope>
+         </dependency>
+         
+         <dependency>
+             <groupId>org.mockito</groupId>
+             <artifactId>mockito-core</artifactId>
+         </dependency>
+         
+         
 	</dependencies>
 
 	<build>
@@ -72,5 +84,12 @@
 			</plugin>
 		</plugins>
 	</build>
-
+    <distributionManagement>
+       <repository>
+           <id>nexus</id>
+           <name>Releases</name>
+           <url>http://172.16.1.132:8081/repository/maven-releases</url>
+       </repository>
+       
+  </distributionManagement>
 </project>
