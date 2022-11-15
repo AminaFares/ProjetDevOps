@@ -41,7 +41,7 @@ stages {
                    }   
                    
          }
-         
+         /*
          stage('nexus') {
             steps {
                
@@ -49,12 +49,12 @@ stages {
 
 sh 'mvn  deploy -e'                      }
                    }         
-         }
-    /*
+         }*/
+    
           stage('Build Docker Image'){
                       steps {
                           script{
-          				    sh 'docker image build . -t haifa123456/backcicd -f backend-spring/Dockerfile '
+          				    sh 'docker image build  -t raealr/backcicd .  '
                           }
                       }
           		}
@@ -62,24 +62,24 @@ sh 'mvn  deploy -e'                      }
                                 steps {
                                     script {
 
-                                        sh 'docker login -u haifa123456 -p haifabrineg'}
+                                        sh 'docker login -u raealr -p 841997DOCKER'}
                                 }
                                 }
                           stage('Pushing Docker Image') {
                                 steps {
                                     script {
 
-                                     sh 'docker push haifa123456/backcicd'
+                                     sh 'docker push raealr/backcicd'
                                     }
                                 }
                           }
                           stage('Run Spring && MySQL Containers') {
                                 steps {
                                     script {
-                                      sh ' docker-compose -f backend-spring/docker-compose.yml up -d '
+                                      sh ' docker-compose  up -d '
                                     }
                                 }
-                            }*/
+                            }
      }
      
      }
