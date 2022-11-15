@@ -3,30 +3,18 @@ pipeline {
     
 stages {
 
-    
+    stage('Cleaning the project') {
+            steps{
+                sh "mvn -B -DskipTests clean  " 
+            }
+        } 
+          stage('Artifact Construction') {
+            steps{
+                sh "mvn -B -DskipTests package " 
+            }
+        }
         
-        stage('MVN CLEAN') {
-            steps {
-               
-              script {
-
-                  sh 'mvn  clean'
-
- 
-                      }
-                   }        
-         }
-          stage('MVN compile') {
-            steps {
-               
-              script {
-
-                  sh 'mvn  compile'
-
- 
-                      }
-                   }        
-         }
+        
     /*
           stage('MVN test') {
             steps {
@@ -40,11 +28,7 @@ stages {
                    }        
          }*/
 
-          stage('Artifact Construction') {
-                      steps{
-                          sh "mvn -B -DskipTests package "
-                      }
-                  }
+          
         /*  stage('SONAR') {
             steps {
                
