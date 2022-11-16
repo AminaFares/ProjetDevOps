@@ -63,9 +63,7 @@ pipeline {
        stage("pushing image to docker hub") { 
              steps { 
                  script { 
-                    withCredentials([usernamePassword(credentialsId: 'Docker_hub', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-                    sh "echo $PASS | docker login -u $USER --password-stdin"
-                    sh 'docker push hajali98/spring:latest'
+			 sh 'docker login -u yassinezaghdane -p M3ra2j118*'
                         
                     }
                  } 
