@@ -21,3 +21,6 @@ services:
     networks:
       - projectnetwork 
     restart: on-failure
+
+networks:
+  projectnetwork:
