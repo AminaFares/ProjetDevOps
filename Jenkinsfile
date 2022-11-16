@@ -52,6 +52,34 @@ pipeline {
 }                }
             }
         }
+	
+	stage("Create Docker Image") {
+            steps {
+                script {
+                   sh 'docker build -t yassinezaghdane/spring:latest .'
+                }
+            }
+        }
+      /*  stage("pushing image to docker hub") { 
+             steps { 
+                 script { 
+                    withCredentials([usernamePassword(credentialsId: 'Docker_hub', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+                    sh "echo $PASS | docker login -u $USER --password-stdin"
+                    sh 'docker push hajali98/spring:latest'
+                        
+                    }
+                 } 
+             } 
+         }
+                  stage("Docker compose") {
+            steps {
+                script {
+                   sh 'docker compose up -d'
+                }
+            }
+         }*/
+
+
 
      
  }
