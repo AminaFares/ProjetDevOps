@@ -68,7 +68,7 @@ pipeline {
                     }
                  } 
              } 
-         }
+         
                /*   stage("Docker compose") {
             steps {
                 script {
