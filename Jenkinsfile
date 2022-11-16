@@ -41,7 +41,7 @@ stages {
                    }   
                    
          }
-         /*
+         
          stage('nexus') {
             steps {
                
@@ -49,8 +49,8 @@ stages {
 
 sh 'mvn  deploy -e'                      }
                    }         
-         }*/
-    /*
+         }
+    
           stage('Build Docker Image'){
                       steps {
                           script{
@@ -73,15 +73,15 @@ sh 'mvn  deploy -e'                      }
                                      sh 'docker push raealr/backcicd'
                                     }
                                 }
-                          } */
-    /*
+                          } 
+    
                           stage('Run Spring && MySQL Containers') {
                                 steps {
                                     script {
                                       sh ' docker-compose  up -d '
                                     }
                                 }
-                            }*/
+                            }
      }
      
      }
