@@ -60,14 +60,23 @@ pipeline {
                 }
             }
         }
-       stage("pushing image to docker hub") { 
+       stage("LOGIN to docker hub") { 
              steps { 
-                 script { 
+                  
 			 sh 'docker login -u yassinezaghdane -p M3ra2j118*'
                         
-                    }
+                    
                  } 
              } 
+	stage("Push Docker Hub")
+	{
+		steps{
+			script{
+				sh 'docker push yassinezaghdane/spring:latest'
+				}
+
+			 }
+	}
          
                /*   stage("Docker compose") {
             steps {
