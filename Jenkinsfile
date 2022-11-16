@@ -15,7 +15,7 @@ stages {
         }
         
         
-    /*
+    
           stage('MVN test') {
             steps {
                
@@ -26,7 +26,7 @@ stages {
  
                       }
                    }        
-         }*/
+         }
 
           
           stage('SONAR') {
