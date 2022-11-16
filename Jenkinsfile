@@ -21,7 +21,7 @@ stages {
                
               script {
 
-                  sh 'mvn -f backend-spring/pom.xml test'
+                  sh 'mvn  test'
 
  
                       }
