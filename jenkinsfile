@@ -1,0 +1,121 @@
+pipeline {
+    agent any
+    
+tools 
+{
+    maven "M2_HOME"
+}
+ environment {
+        DOCKERHUB_CREDENTIALS=credentials('docker')
+    }
+
+    stages {
+         stage('GIT') {
+            steps {
+               echo 'git start'
+      //  sh " git url: 'https://github.com/ihebm123/GestionMagasinSpring.git' " 
+              git branch:'safouane1',url: 'https://github.com/AminaFares/ProjetDevOps.git'
+
+         /*  sh "ls -lart " 
+             sh "git branch -a"
+             sh "git checkout branchname"*/
+           
+              echo 'git done '
+            }
+         }
+           stage('CLEAN') {
+            steps {
+              
+          script {
+   
+               sh "mvn clean"
+   
+            }
+   
+        }
+             }
+             
+                   stage('COMPILE') {
+            steps {
+              
+          script {
+
+               sh "mvn compile "
+
+            }
+  
+        }
+             }
+        
+              stage('TEST') {
+            steps {
+
+               sh "mvn test "
+
+            }
+              }
+              
+              
+    
+             stage('SONAR') {
+            steps {
+              
+        
+              sh "mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=20122172  "
+     
+           
+              
+            }
+            
+            
+        }
+              
+              
+             stage('NEXUS DEPLOY') {
+            steps {
+
+               sh 'mvn clean package -Dmaven.test.skip=true deploy:deploy-file -DgroupId=tn.esprit.rh -DartifactId=achat -Dversion=1.0  -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://192.168.1.11:8081/repository/maven-releases/ -Dfile=target/achat-1.0.jar'
+
+            }
+
+        }
+        
+              
+           stage("Building Docker Image") { 
+             steps { 
+                 script { 
+                    
+                    sh 'docker build -t safouane00/achat:1.0 .'
+                   
+                 } 
+             } 
+         } 
+         
+         
+           stage("Pushing Image to DockerHub") { 
+             steps { 
+                 script { 
+             sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+
+                    sh 'docker push safouane00/achat:1.0'
+                 } 
+             } 
+         } 
+               
+           
+           
+           
+         
+         
+       stage("Docker-Compose") { 
+             steps { 
+                 script { 
+                    sh "docker-compose up -d  "
+                 } 
+             } 
+         } 
+              
+              
+}
+        
+}
